@@ -95,6 +95,7 @@ jobs:
           sudo apt-get install python3-dev
           pip3 install --upgrade pip
           pip3 install -r requirements.txt
+          pip3 pip install autopep8
           echo installed dependencies
       # Downloading Test Files
 
@@ -126,6 +127,10 @@ jobs:
           DJANGO_SETTINGS_MODULE: Rekognition.settings
 
         run: |
+          autopep8 --in-place --aggressive .\media\text\__init__.py
+          autopep8 --in-place --aggressive .\corelib\textbox.py
+          autopep8 --in-place --aggressive .\coreapi\views.py
+          autopep8 --in-place --aggressive .\corelib\main_api.py
           flake8 --ignore=E501,F821,E265,E741 .
           coverage run -m tests.test_views
           coverage run -m tests.test_models
