@@ -9,7 +9,7 @@ on:
     branches: [ dev,master ]
 
 jobs:
-  server-job:
+  build-job:
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
@@ -146,11 +146,15 @@ jobs:
       - name: Launch Server
         env:
           DJANGO_SETTINGS_MODULE: Rekognition.settings
-        
-        run: |
-          python manage.py makemigrations
-          python manage.py migrate
-          python manage.py runserver 8000
+
+      - uses: docker-practice/actions-setup-docker@master
+         run:|
+            sudo apt-get update
+            sudo apt chmod 666 /var/run/docker.sock
+            docker pull tensorflow/serving:nightly-devel
+            docker run -it -p 8500:8500 -p 8501:8501 -v ./corelib/model/tfs/model_volume:/home/ tensorflow/serving:nightly-devel
+            tensorflow_model_server --port=8500 --rest_api_port=8501 --model_config_file=/home/configs/models.conf            
+
 
       - name: Run Tests
         env:
