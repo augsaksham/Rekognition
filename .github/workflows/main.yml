@@ -143,12 +143,12 @@ jobs:
           export DJANGO_SETTINGS_MODULE="Rekognition.settings"
       # Running Tests
 
+      - uses: docker-practice/actions-setup-docker@master
+      
       - name: Launch Server
         env:
           DJANGO_SETTINGS_MODULE: Rekognition.settings
-
-      - uses: docker-practice/actions-setup-docker@master
-         run:|
+          run: |
             sudo apt-get update
             sudo apt chmod 666 /var/run/docker.sock
             docker pull tensorflow/serving:nightly-devel
