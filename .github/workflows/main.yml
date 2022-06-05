@@ -142,7 +142,8 @@ jobs:
           cd ../..	
           export DJANGO_SETTINGS_MODULE="Rekognition.settings"
       # Running Tests
-
+      
+      - name : Docker Setup
       - uses: docker-practice/actions-setup-docker@master
       
       - name: Launch Server
