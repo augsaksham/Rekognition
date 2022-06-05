@@ -119,7 +119,7 @@ jobs:
           wget https://www.dropbox.com/s/ij5hj4hznczvfcw/text.mp4
           cd ../..
           cd media 
-          mkdir {face,output,similarFace,text,object}
+          mkdir object
           cd ..
           cd corelib/model
           mkdir facenet
