@@ -118,6 +118,28 @@ jobs:
           wget https://www.dropbox.com/s/3w5ghr5jj6opr58/scene1.mp4
           wget https://www.dropbox.com/s/ij5hj4hznczvfcw/text.mp4
           cd ../..
+          cd media 
+          mkdir {face,output,similarFace,text,object}
+          cd ..
+          cd corelib/model
+          mkdir facenet
+          cd facenet
+          wget https://www.dropbox.com/s/jm8grrifh5yk7is/2017.zip?dl=1 -O 2017.zip
+          unzip 2017.zip
+          rm 2017.zip
+          cd ..
+          mkdir tfs
+          cd tfs
+          wget https://www.dropbox.com/s/v0ai89jj5npowt1/tfs.zip
+          unzip tfs.zip
+          rm tfs.zip
+          cd ../../..
+          cd data
+          mkdir text_reco
+          cd text_reco
+          wget https://www.dropbox.com/s/dl/h2owqbmnrsvqo0c/ord_map_en.json
+          wget https://www.dropbox.com/s/dl/yzkijd7j5yflhli/char_dict_en.json
+          cd ../..	
           export DJANGO_SETTINGS_MODULE="Rekognition.settings"
       # Running Tests
 
