@@ -11,8 +11,8 @@ jobs:
   docker-job:
     strategy:
       matrix:
-        os: [ubuntu-20.04,ubuntu-18.04]
-        version: [3.6]
+        os: [ubuntu-20.04]
+        version: [3.8]
     runs-on: ${{ matrix.os }}
 
     # service containers to run with `postgres-job`
@@ -92,11 +92,13 @@ jobs:
           echo python version = 
           python --version
           sudo apt-get install python3-dev
+          sudo apt-get install build-essential libssl-dev libffi-dev python-dev
           pip3 install --upgrade pip
           pip3 install -r requirements.txt
-          pip3 install tensorflow-serving-api==2.5.2
+          pip3 install tensorflow-serving-api
           pip3 install pytest
           echo installed dependencies
+
           flake8 --ignore=E501,F821,E265,E741 .
       # Downloading Test Files
 

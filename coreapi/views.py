@@ -58,8 +58,6 @@ class SceneText(views.APIView):
         else:
             if (result["Error"] == 'An HTTP error occurred.'):
                 return Response(result, status=status.HTTP_400_BAD_REQUEST)
-            elif (result["Error"] == 'A Connection error occurred.'):
-                return Response(result, status=status.HTTP_503_SERVICE_UNAVALIABLE)
             elif (result["Error"] == 'The request timed out.'):
                 return Response(result, status=status.HTTP_408_REQUEST_TIMEOUT)
             elif (result["Error"] == 'Bad URL'):
@@ -165,8 +163,6 @@ class NsfwRecognise(views.APIView):
         else:
             if (result["Error"] == 'An HTTP error occurred.'):
                 return Response(result, status=status.HTTP_400_BAD_REQUEST)
-            elif (result["Error"] == 'A Connection error occurred.'):
-                return Response(result, status=status.HTTP_503_SERVICE_UNAVALIABLE)
             elif (result["Error"] == 'The request timed out.'):
                 return Response(result, status=status.HTTP_408_REQUEST_TIMEOUT)
             elif (result["Error"] == 'Bad URL'):
